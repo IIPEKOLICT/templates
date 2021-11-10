@@ -1,0 +1,5 @@
+@import 'vars';
+
+@function size($value) {
+  @return $value * $base;
+}

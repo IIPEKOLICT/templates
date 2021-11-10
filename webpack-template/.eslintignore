@@ -1,0 +1,6 @@
+dist
+node-modules
+webpack.interfaces.ts
+webpack.common.ts
+webpack.dev.config.ts
+webpack.prod.config.ts

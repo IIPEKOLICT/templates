@@ -1,0 +1,51 @@
+{
+  "version": "0.1.0",
+  "description": "webpack project",
+  "private": true,
+  "name": "webpack-project",
+  "scripts": {
+    "start": "webpack serve --config webpack.dev.config.ts",
+    "build": "webpack --config webpack.prod.config.ts",
+    "stats": "webpack --profile --json > stats.json && webpack-bundle-analyzer stats.json",
+    "lint": "eslint src/ --fix"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "@babel/preset-typescript": "^7.16.0",
+    "@types/webpack": "^5.28.0",
+    "@types/webpack-dev-server": "^4.3.1",
+    "@typescript-eslint/eslint-plugin": "^5.3.0",
+    "@typescript-eslint/parser": "^5.3.0",
+    "babel-loader": "^8.2.3",
+    "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^8.1.1",
+    "css-loader": "^5.2.7",
+    "css-minimizer-webpack-plugin": "^3.1.1",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-webpack-plugin": "^3.1.0",
+    "html-loader": "^3.0.0",
+    "html-webpack-plugin": "^5.3.2",
+    "mini-css-extract-plugin": "^1.6.2",
+    "prettier": "2.4.1",
+    "sass": "^1.42.1",
+    "sass-loader": "^11.1.1",
+    "terser-webpack-plugin": "^5.2.4",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.4.4",
+    "webpack": "^5.58.1",
+    "webpack-bundle-analyzer": "^4.5.0",
+    "webpack-cli": "^4.9.0",
+    "webpack-dev-server": "^4.3.1",
+    "webpack-remove-empty-scripts": "^0.7.1"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "materialize-css": "^1.0.0-rc.2",
+    "normalize.css": "^8.0.1"
+  }
+}
