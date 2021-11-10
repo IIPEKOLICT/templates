@@ -105,3 +105,6 @@ dist
 
 # webstorm
 .idea/
+
+#sheet
+package-lock.json
