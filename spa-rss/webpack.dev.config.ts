@@ -1,9 +1,9 @@
 import { join } from 'path';
 import merge from 'webpack-merge';
-import { commonConfig, WebpackConfig } from './webpack.config';
+import { webpackBaseConfig, WebpackConfig } from './webpack.base.config';
 
 export default function (): WebpackConfig {
-  return merge(commonConfig, {
+  return merge(webpackBaseConfig, {
     devServer: {
       open: true,
       hot: true,

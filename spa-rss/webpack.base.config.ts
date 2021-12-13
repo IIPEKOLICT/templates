@@ -7,7 +7,7 @@ export type WebpackConfig = Configuration & {
   devServer?: IDevServer;
 };
 
-export const commonConfig: WebpackConfig = {
+export const webpackBaseConfig: WebpackConfig = {
   entry: join(__dirname, 'src', 'main.ts'),
   target: ['web', 'es6'],
   output: {
