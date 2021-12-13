@@ -1,19 +1,19 @@
-import { merge } from 'webpack-merge';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { join } from 'path';
+import merge from 'webpack-merge';
 import { commonConfig, WebpackConfig } from './webpack.config';
 
 export default function (): WebpackConfig {
   return merge(commonConfig, {
-    mode: 'development',
-    devtool: 'source-map',
     devServer: {
       open: true,
       hot: true,
       compress: true,
+      liveReload: true,
+      watchFiles: join(__dirname, 'src'),
     },
-    output: {
-      filename: 'js/[name].js',
-    },
+    mode: 'development',
+    devtool: 'source-map',
+    output: { filename: 'js/[name].js' },
     module: {
       rules: [
         {
@@ -26,10 +26,5 @@ export default function (): WebpackConfig {
         },
       ],
     },
-    plugins: [
-      new MiniCssExtractPlugin({
-        filename: 'css/[name].css',
-      }),
-    ],
   });
 }

@@ -1,18 +1,14 @@
-import { merge } from 'webpack-merge';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import merge from 'webpack-merge';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
-import { WebpackConfig, commonConfig } from './webpack.config';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { commonConfig, WebpackConfig } from './webpack.config';
 
 export default function (): WebpackConfig {
   return merge(commonConfig, {
     mode: 'production',
-    optimization: {
-      minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
-    },
-    output: {
-      filename: 'js/[name].[contenthash].js',
-    },
+    optimization: { minimizer: [new CssMinimizerPlugin(), new TerserPlugin()] },
+    output: { filename: 'js/[name].[contenthash].js' },
     module: {
       rules: [
         {
@@ -26,9 +22,7 @@ export default function (): WebpackConfig {
       ],
     },
     plugins: [
-      new MiniCssExtractPlugin({
-        filename: 'css/[name].[contenthash].css',
-      }),
+      new MiniCssExtractPlugin({ filename: 'css/[name].[contenthash].css' }),
     ],
   });
 }

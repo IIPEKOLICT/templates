@@ -1,6 +1,6 @@
 import { join } from 'path';
 import HtmlPlugin from 'html-webpack-plugin';
-import { Configuration, CleanPlugin } from 'webpack';
+import { CleanPlugin, Configuration } from 'webpack';
 import { Configuration as IDevServer } from 'webpack-dev-server';
 
 export type WebpackConfig = Configuration & {

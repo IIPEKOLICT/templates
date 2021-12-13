@@ -4,6 +4,8 @@
  * @param length {number} Range length
  * @returns {number[]} Range (array, which elements - numbers of range)
  */
-export default function useRange(length) {
-  return [...Array(length).keys()];
-}
+// export default function useRange(length: number): number[] {
+//   return [...Array(length).map((_, index: number) => index)];
+// }
+
+// {deprecated}

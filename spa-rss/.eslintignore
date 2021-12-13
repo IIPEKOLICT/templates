@@ -2,3 +2,4 @@ dist/
 webpack.*.js
 webpack.*.ts
 selftest.*
+decorators.ts

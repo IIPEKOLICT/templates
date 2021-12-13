@@ -4,8 +4,8 @@
  * @param el {HTMLElement}
  * @param src {string}
  */
-export default function useBackground(el, src) {
-  const img = new Image();
+export default function useBackground(el: HTMLElement, src: string): void {
+  const img: HTMLImageElement = new Image();
   const element = el;
 
   img.src = src;
