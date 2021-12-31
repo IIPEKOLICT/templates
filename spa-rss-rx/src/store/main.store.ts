@@ -1,11 +1,10 @@
-import { AppStore } from '../app';
 import { IMainState, IMainStore } from '../shared/interfaces';
 import { StoreKey } from '../shared/enums';
 import { DEFAULT_MAIN_STATE } from '../shared/defaults';
 import { IStream } from '../core/interfaces';
-import { Stream } from '../core/base';
+import { Store, Stream } from '../core/base';
 
-export default class MainStore extends AppStore<IMainState> implements IMainStore {
+export default class MainStore extends Store<IMainState> implements IMainStore {
   protected defaultState: IMainState = DEFAULT_MAIN_STATE;
 
   first: IStream<number> = new Stream<number>(

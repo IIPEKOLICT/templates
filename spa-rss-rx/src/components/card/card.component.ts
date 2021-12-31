@@ -19,12 +19,12 @@ export default class CardComponent extends AppPage {
     };
   }
 
-  private updateFirst(): void {
-    this.firstSpan.textContent = this.context.main.first.value.toString();
+  private updateFirst(value: number): void {
+    this.firstSpan.textContent = value.toString();
   }
 
-  private updateSecond(): void {
-    this.secondSpan.textContent = this.context.main.second.value.toString();
+  private updateSecond(value: number): void {
+    this.secondSpan.textContent = value.toString();
   }
 
   protected onInit() {
