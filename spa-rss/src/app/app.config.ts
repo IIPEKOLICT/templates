@@ -1,8 +1,8 @@
 import { AppConfig } from '../core/types';
-import { Store } from '../shared/types';
-import MainPage from '../pages/main/main.page';
+import { AppStore } from '../shared/types';
+import { MainPage } from '../pages';
 
-const appConfig: AppConfig<Store> = {
+const appConfig: AppConfig<AppStore> = {
   entry: MainPage,
   modals: {},
   pages: {

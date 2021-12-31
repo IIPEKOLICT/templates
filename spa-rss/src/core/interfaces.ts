@@ -5,6 +5,7 @@ export interface IApplication {
 export interface IRouter {
   openPage(id: string): void;
   openModal(id: string): void;
+  getRootContainer(): HTMLElement;
 }
 
 export interface IComponent {
@@ -18,12 +19,16 @@ export interface IPage extends IComponent {
 }
 
 export interface IObserver {
-  update(): void;
+  update(action?: string): void;
+  onDestroy(): void;
 }
 
-export interface ISubject {
-  observers: IObserver[];
+export interface IStream {
   subscribe(observer: IObserver): void;
   unsubscribe(observer: IObserver): void;
-  notify(): void;
+  notify(actions?: string[]): void;
+}
+
+export interface IState {
+  save(): void;
 }

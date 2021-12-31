@@ -24,15 +24,3 @@ export function bootstrap(app: IApplication) {
 export function render(component: IComponent) {
   return component.render();
 }
-
-/**
- * Helper for play audio
- *
- * @param audioPath {string}
- * @param volume {number}
- */
-export function playSound(audioPath: string, volume: number): void {
-  const audio: HTMLAudioElement = new Audio(audioPath);
-  audio.volume = volume;
-  audio.play().then();
-}

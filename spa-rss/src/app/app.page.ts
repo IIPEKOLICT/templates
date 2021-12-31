@@ -1,4 +1,4 @@
 import { Page } from '../core/base';
-import { Store } from '../shared/types';
+import { AppStore } from '../shared/types';
 
-export default class AppPage extends Page<Store> {}
+export default class AppPage extends Page<AppStore> {}

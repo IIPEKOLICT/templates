@@ -1,4 +1,4 @@
 import { bootstrap } from './core/helpers';
-import { App, appConfig } from './app';
+import { App, appConfig, appStore } from './app';
 
-bootstrap(new App(appConfig, {}));
+bootstrap(new App(appConfig, appStore));

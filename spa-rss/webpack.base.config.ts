@@ -2,6 +2,7 @@ import { join } from 'path';
 import HtmlPlugin from 'html-webpack-plugin';
 import { CleanPlugin, Configuration } from 'webpack';
 import { Configuration as IDevServer } from 'webpack-dev-server';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 export type WebpackConfig = Configuration & {
   devServer?: IDevServer;
@@ -24,6 +25,14 @@ export const webpackBaseConfig: WebpackConfig = {
             options: { minimize: true },
           },
         ],
+      },
+      {
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
         test: /\.ts$/i,

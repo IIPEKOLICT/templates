@@ -5,18 +5,30 @@ import { IComponent } from '../interfaces';
 /**
  * Base component class
  */
-export default class Component implements IComponent {
+export default abstract class Component implements IComponent {
   public template = '<div></div>';
-  protected vars: HTMLTemplateVars = {};
   protected node: HTMLElement = document.createElement('div');
 
+  protected vars(): HTMLTemplateVars {
+    return {};
+  }
+
   /**
-   * Prebuilt method for init component
+   * Method for compile component from template
+   *
+   * @protected
+   */
+  protected compile(): void {
+    this.node = useHtml(this.template, this.vars());
+  }
+
+  /**
+   * Prebuilt method for init component (subscribe subjects, declare children, etc.)
    *
    * @protected
    */
   protected onInit(): void {
-    this.node = useHtml(this.template, this.vars);
+    //
   }
 
   /**
@@ -50,6 +62,7 @@ export default class Component implements IComponent {
    * Prebuilt method for render component
    */
   public render(): HTMLElement {
+    this.compile();
     this.onInit();
     this.bindElements();
     this.inject();

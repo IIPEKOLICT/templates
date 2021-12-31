@@ -8,21 +8,6 @@ export type CssVars = {
   [property: string]: string;
 };
 
-// export type Pages = {
-//   [property: string]: typeof Page;
-// };
-//
-// export type Modals = {
-//   [property: string]: typeof Modal;
-// };
-
-// export type AppConfig = {
-//   root: HTMLElement;
-//   entry: typeof Page;
-//   pages: Pages;
-//   modals: Modals;
-// };
-
 export type PageClass<S> = new (router: IRouter, store: S) => IPage;
 
 export type Pages<S> = {
@@ -38,9 +23,4 @@ export type AppConfig<S> = {
 
 export type ComponentParams = {
   template: string;
-};
-
-export type Action<T, P> = {
-  type: T;
-  payload: P;
 };

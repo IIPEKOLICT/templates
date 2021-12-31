@@ -9,18 +9,6 @@ export default function (): WebpackConfig {
     mode: 'production',
     optimization: { minimizer: [new CssMinimizerPlugin(), new TerserPlugin()] },
     output: { filename: 'js/[name].[contenthash].js' },
-    module: {
-      rules: [
-        {
-          test: /\.css$/i,
-          use: [MiniCssExtractPlugin.loader, 'css-loader'],
-        },
-        {
-          test: /\.s[ac]ss$/i,
-          use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
-        },
-      ],
-    },
     plugins: [
       new MiniCssExtractPlugin({ filename: 'css/[name].[contenthash].css' }),
     ],

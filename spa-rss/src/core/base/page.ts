@@ -1,15 +1,15 @@
 import Component from './component';
-import { IPage, IRouter } from '../interfaces';
+import { IObserver, IPage, IRouter } from '../interfaces';
 
 /**
  * Base page class
  */
-export default class Page<S> extends Component implements IPage {
-  protected readonly ACTIVE_CLASS = 'active';
-  protected readonly PREV_CLASS = 'anim-prev';
-  protected readonly NEXT_CLASS = 'anim-next';
-  protected router: IRouter;
-  protected store: S;
+export default abstract class Page<S>
+  extends Component
+  implements IPage, IObserver {
+  protected readonly activeClass = 'active';
+  protected readonly prevClass = 'anim-prev';
+  protected readonly nextClass = 'anim-next';
 
   /**
    * Page constructor
@@ -18,21 +18,34 @@ export default class Page<S> extends Component implements IPage {
    * @param store app store
    * @protected
    */
-  public constructor(router: IRouter, store: S) {
+  public constructor(protected router: IRouter, protected store: S) {
     super();
     this.router = router;
     this.store = store;
   }
 
   /**
+   * Method for render page
+   */
+  public render(): HTMLElement {
+    this.compile();
+    this.onInit();
+    this.bindElements();
+    this.inject();
+    this.handleEvents();
+    this.update();
+    return this.node;
+  }
+
+  /**
    * Prebuilt method for open this page
    */
   public open(): void {
-    const { node, ACTIVE_CLASS, PREV_CLASS } = this;
+    const { node, activeClass, prevClass } = this;
 
-    node.classList.add(ACTIVE_CLASS, PREV_CLASS);
+    node.classList.add(activeClass, prevClass);
     node.addEventListener('animationend', () => {
-      node.classList.remove(PREV_CLASS);
+      node.classList.remove(prevClass);
     });
   }
 
@@ -40,8 +53,25 @@ export default class Page<S> extends Component implements IPage {
    * Prebuilt method for close this page
    */
   public close(): void {
-    const { node, NEXT_CLASS } = this;
-    node.classList.add(NEXT_CLASS);
-    node.addEventListener('animationend', () => node.remove());
+    const { node, nextClass } = this;
+    node.classList.add(nextClass);
+    node.addEventListener('animationend', () => {
+      this.onDestroy();
+      node.remove();
+    });
+  }
+
+  /**
+   * Prebuilt method for handle destroy event
+   */
+  public onDestroy(): void {
+    //
+  }
+
+  /**
+   * Prebuilt method for handle observer update
+   */
+  public update(/* action?: string */): void {
+    //
   }
 }

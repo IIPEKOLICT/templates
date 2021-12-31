@@ -1,3 +1,3 @@
-import Controller from '../core/base/controller';
+import { Controller } from '../core/base';
 
-export default class AppController extends Controller {}
+export default abstract class AppController<S> extends Controller<S> {}
